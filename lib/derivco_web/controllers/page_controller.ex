@@ -12,6 +12,8 @@ defmodule DerivcoWeb.PageController do
   end
 
   def getSeason(conn, %{"season" => season} = _params) do
+    Alchemetrics.increment(:"season_#{season}")
+
     games = getGamesBySeason(season)
 
     case games do

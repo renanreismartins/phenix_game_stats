@@ -31,3 +31,7 @@ to make a request to the app through the container access `localhost:5000/season
 
 
 Running the docker environment with `docker swarm init` and `docker stack deploy --compose-file=docker-compose.yml prod` will create a docker swarm cluster and all the requests will be towards the HAProxy. That can be accessed trough `localhost:80/seasons`.
+
+#Stack
+ * Phoenix
+ * Alchemetrics

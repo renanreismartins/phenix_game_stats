@@ -1,4 +1,19 @@
-# Derivco
+# Derivco API Stats
+
+Endpoints:
+
+/seasons
+ * List all the season summaries
+
+/seasons/{season}
+ * List all the games for the season
+
+Check the swagger.yaml for more info on the API.
+
+
+Considerations:
+The project was developed 
+
 
 To start your Phoenix server:
 
@@ -7,12 +22,9 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-## Learn more
+To build the docker image: `docker build -t derivco .`
+and to run it: `docker run  -p 5000:5000 derivco`. Then you can access the 
+to make a request to the app through the container access `localhost:5000`  
 
-  * Official website: http://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+Running the docker environment with `docker-compose up` all the requests will be towards the HAProxy.

@@ -4,7 +4,8 @@ use Mix.Config
 # you can enable the server option below.
 config :derivco, DerivcoWeb.Endpoint,
   http: [port: 4002],
-  server: false
+  server: false,
+  dataset: "data_test.csv"
 
 # Print only warnings and errors during test
 config :logger, level: :warn

@@ -16,7 +16,8 @@ defmodule DerivcoWeb.Router do
   scope "/", DerivcoWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/seasons", PageController, :index
+    get "/seasons/:season", PageController, :getSeason
   end
 
   # Other scopes may use custom stacks.

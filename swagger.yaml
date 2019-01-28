@@ -1,0 +1,107 @@
+swagger: '2.0'
+info:
+  description: "Derivco Stats API. This api provides a list of Season and the results for a specific league"
+  version: 1.0.0
+  title: Derivco Stats API
+  contact:
+    email: status.api@derivco.com
+host: api.stats.derivco.com
+basePath: /
+schemes:
+  - http
+paths:
+  /seasons:
+    get:
+      description: Returns an array of all Seasons' summary
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/SeasonSummary'
+
+  /seasons/{season}:
+    get:
+      description: Returns an array with all the games for the specified season
+      produces:
+        - application/json
+      parameters:
+        - name: season
+          in: path
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Game'
+        '404':
+          description: Season not found
+definitions:
+  SeasonSummary:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      season:
+        type: integer
+        example: 201516
+      from:
+        type: integer
+        description: First year of the season
+        example: 2017
+      to:
+        type: integer
+        description: Last year of the season
+        example: 2019
+  Game:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      div:
+        type: string
+        example: SP1
+      season:
+        type: integer
+        example: 201617
+      date:
+        type: string
+        example: 2019-01-01
+      HomeTeam:
+        type: string
+        example: Malaga
+      AwayTeam:
+        type: string
+        example: Eibar
+      FTHG:
+        type: integer
+        description: Full Time Home Team Goals
+        example: 1
+      FTAG:
+        type: integer
+        description: Full Time Away Team Goals
+        example: 3
+      FTR:
+        type: string
+        description: Full Time Result (H=Home Win, D=Draw, A=Away Win)
+        example: D
+      HTHG:
+        type: integer
+        description: Half Time Home Team Goals
+        example: 3
+      HTAG:
+        type: integer
+        description: Half Time Away Team Goals
+        example: 1
+      HTR:
+        type: string
+        description: Half Time Result (H=Home Win, D=Draw, A=Away Win)
+        example: H
